@@ -1,0 +1,95 @@
+{
+  "name": "ddd",
+  "version": "0.0.1",
+  "description": "sample db inspection",
+  "main": "main.js",
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/jfseb/fdevstart.git"
+  },
+  "bugs": {
+    "url": "http://github.com/jfseb/fdevstart/issues"
+  },
+  "scripts": {
+    "setup": "typings install debug && gulp default",
+    "test": "gulp test",
+    "run": "node gen/insert.js",
+    "start": "node gen/insert.js",
+    "instrument": "jscoverage gen2/ gen_cov/ --exclude *.map",
+    "instrumentGULP": "gulp instrument",
+    "testcovWIN": "set FSD_COVERAGE=1 && nodeunit test/match test/exec test/ui test/model test/bot test/utils test/graph --reporter=lcov >info.lcov",
+    "testcovNoReporter": "export FSD_COVERAGE=1 && nodeunit test/match test/exec test/ui test/model test/bot test/utils test/graph ",
+    "testcovNoPipe": "export FSD_COVERAGE=1 && nodeunit test/match test/exec test/ui test/bot test/utils test/graph --reporter=lcov",
+    "testcov": "export FSD_COVERAGE=1 && nodeunit test/match test/regress test/bot test/exec test/ui test/model test/utils test/graph --reporter=lcov | coveralls",
+    "tocoveralls": "cat info.lcov | coveralls"
+  },
+  "keywords": [
+    "database",
+    "pg"
+  ],
+  "standard": {
+    "ignore": [
+      "src\\utils\\dam*",
+      "gen/",
+      "gen_cov/",
+      "**/out/",
+      "src/ts/**/*.js",
+      "src-cov/**/*.js",
+      "lib/text*",
+      "render"
+    ]
+  },
+  "author": "jfsebpublic@gmail.com",
+  "license": "MIT",
+  "dependencies": {
+    "debug": "^2.3.2",
+    "pg": "^6.1.2",
+    "pg-promise": "^5.6.4"
+  },
+  "bin": {
+    "nodeunit": ".nodeunit/bin/nodeunit",
+    "coverallst": ".coveralls/bin/coveralls"
+  },
+  "directories": {
+    "lib": "./lib",
+    "src": "./src",
+    "test": "./test",
+    "doc": "./doc",
+    "man": "./man1"
+  },
+  "babel": {
+    "comments": true
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.50",
+    "@types/node": "7.0.5",
+    "@types/debug": "0.0.29",
+    "@types/fixed-data-table": "^0.6.31",
+    "@types/pg": "^6.1.34",
+    "awesome-typescript-loader": "^3.0.0-beta.18",
+    "eslint": "^3.10.2",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-standard": "^2.0.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-coveralls": "^0.1.4",
+    "gulp-env": "^0.4.0",
+    "gulp-eslint": "^3.0.1",
+    "gulp-instrument": "^0.1.0",
+    "gulp-jsdoc3": "^1.0.1",
+    "gulp-log-capture": "0.0.6",
+    "gulp-newer": "^1.3.0",
+    "gulp-nodeunit": "0.0.5",
+    "gulp-shell": "^0.5.2",
+    "gulp-sourcemap": "^1.0.1",
+    "gulp-typescript": "^3.1.3",
+    "gulp-watch": "^4.3.11",
+    "jscoverage": "^0.6.0",
+    "levelgraph": "^1.3.1",
+    "node-uuid": "^1.4.7",
+    "nodeunit": "^0.10.2",
+    "ts-loader": "^2.0.0",
+    "typescript": "^2.0.10"
+  }
+}
